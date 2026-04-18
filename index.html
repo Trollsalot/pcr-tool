@@ -1,0 +1,1125 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;font-size:13px;background:#E8EDF2;color:#222}
+.app{max-width:980px;margin:0 auto;padding:10px}
+.top-header{background:#1B3A5C;color:#fff;padding:8px 14px;border-radius:6px 6px 0 0;display:flex;align-items:center;justify-content:space-between}
+.top-header .logo{font-size:15px;font-weight:700;letter-spacing:1px}
+.top-header .pcr-id{font-size:12px;opacity:.8}
+.top-header-right{display:flex;gap:6px}
+.hbtn{padding:5px 12px;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;border:none}
+.hbtn-ghost{background:rgba(255,255,255,0.15);color:#fff}
+.hbtn-ghost:hover{background:rgba(255,255,255,0.28)}
+.hbtn-white{background:#fff;color:#1B3A5C}
+.hbtn-white:hover{background:#dce8f5}
+.hbtn-green{background:#217346;color:#fff}
+.hbtn-green:hover{background:#185c38}
+.hbtn-red{background:#C0392B;color:#fff}
+.hbtn-red:hover{background:#a02f22}
+.tab-bar{background:#2E75B6;display:flex;overflow-x:auto}
+.tab-bar::-webkit-scrollbar{height:3px}
+.tab-btn{padding:9px 16px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.75);cursor:pointer;border:none;background:none;white-space:nowrap;border-bottom:3px solid transparent;letter-spacing:0.2px}
+.tab-btn:hover{color:#fff;background:rgba(255,255,255,0.1)}
+.tab-btn.active{color:#fff;border-bottom:3px solid #FFD700;background:rgba(255,255,255,0.12)}
+.tab-content{background:#fff;border:1px solid #c8d4e0;border-top:none;border-radius:0 0 6px 6px;padding:0}
+.tab-pane{display:none;padding:14px}
+.tab-pane.active{display:block}
+.sec{border:1px solid #c8d4e0;border-radius:4px;margin-bottom:12px;overflow:hidden}
+.sec-hdr{background:#1B3A5C;color:#fff;padding:6px 12px;font-size:12px;font-weight:700;letter-spacing:0.3px;display:flex;align-items:center;justify-content:space-between}
+.sec-hdr .sh-badge{background:rgba(255,255,255,0.2);border-radius:10px;padding:1px 7px;font-size:11px;font-weight:400}
+.sec-body{padding:10px 12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
+.g5{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:8px}
+.g6{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.f{display:flex;flex-direction:column;gap:3px;margin-bottom:6px}
+.f:last-child{margin-bottom:0}
+.f label{font-size:11px;font-weight:700;color:#1B3A5C;text-transform:uppercase;letter-spacing:0.3px}
+.f input,.f select,.f textarea{padding:5px 8px;border:1px solid #b0bec5;border-radius:3px;font-size:12px;font-family:Arial,sans-serif;color:#222;background:#fff;width:100%}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:#2E75B6;box-shadow:0 0 0 2px rgba(46,117,182,0.15)}
+.f textarea{resize:vertical;min-height:72px;line-height:1.5}
+.req{color:#C0392B}
+.times-row{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.tbox{display:flex;flex-direction:column;align-items:center;gap:2px}
+.tbox label{font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase;text-align:center}
+.tbox input{width:100%;text-align:center;padding:5px 2px;font-size:12px;border:1px solid #b0bec5;border-radius:3px;font-family:'Courier New',monospace}
+.tnow{font-size:10px;color:#2E75B6;cursor:pointer;background:none;border:none;text-decoration:underline;padding:0;font-family:Arial}
+.tnow:hover{color:#1B3A5C}
+.vt{width:100%;border-collapse:collapse;font-size:12px}
+.vt th{background:#1B3A5C;color:#fff;padding:5px 6px;text-align:left;font-size:11px;font-weight:700;white-space:nowrap}
+.vt td{padding:3px 4px;border-bottom:1px solid #e0e7ef}
+.vt td input,.vt td select{width:100%;padding:4px 5px;border:1px solid #b0bec5;border-radius:3px;font-size:11px;font-family:Arial,sans-serif}
+.vt tr:nth-child(even) td{background:#F4F8FC}
+.add-row-btn{display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:5px 11px;border:1px dashed #2E75B6;border-radius:4px;color:#2E75B6;font-size:12px;font-weight:600;cursor:pointer;background:none}
+.add-row-btn:hover{background:#EBF3FB}
+.del-btn{padding:3px 7px;border:1px solid #C0392B;border-radius:3px;background:none;color:#C0392B;cursor:pointer;font-size:11px;font-weight:700}
+.del-btn:hover{background:#FDEDEC}
+.fc-row{display:grid;grid-template-columns:90px 1fr 1fr 90px 1fr 90px 28px;gap:5px;align-items:end;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid #e8edf2}
+.fc-row .f{margin-bottom:0}
+.alert-box{background:#FFF9E6;border:1px solid #F0C040;border-radius:4px;padding:8px 12px;font-size:12px;color:#7a5800;margin-bottom:10px}
+.narrative-tools{display:flex;gap:6px;margin-bottom:8px}
+.nbtn{padding:5px 11px;border:1px solid #b0bec5;border-radius:4px;font-size:12px;cursor:pointer;background:#fff;font-weight:600;color:#1B3A5C}
+.nbtn:hover{background:#EBF3FB;border-color:#2E75B6}
+.nbtn-primary{background:#2E75B6;color:#fff;border-color:#2E75B6}
+.nbtn-primary:hover{background:#1B3A5C}
+.billing-row{display:grid;grid-template-columns:1fr 2fr 1fr 1fr 28px;gap:6px;align-items:end;margin-bottom:6px}
+.billing-row .f{margin-bottom:0}
+.sig-box{border:1px solid #b0bec5;border-radius:4px;height:70px;background:#FAFBFC;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:12px;margin-top:4px;cursor:pointer}
+.sig-box.signed{background:#E8F5E9;border-color:#217346;color:#217346;font-weight:700}
+.status-bar{display:flex;gap:6px;padding:6px 14px;background:#EBF3FB;border-top:1px solid #c8d4e0;border-radius:0 0 6px 6px;font-size:11px;color:#1B3A5C;align-items:center;flex-wrap:wrap}
+.sb-item{display:flex;align-items:center;gap:4px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot-green{background:#217346}
+.dot-yellow{background:#E6A817}
+.dot-red{background:#C0392B}
+.dot-gray{background:#90a4ae}
+.reports-list .rc{background:#fff;border:1px solid #c8d4e0;border-radius:4px;padding:10px 14px;margin-bottom:8px;cursor:pointer}
+.reports-list .rc:hover{border-color:#2E75B6;background:#EBF3FB}
+.rc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.rc-title{font-weight:700;font-size:13px;color:#1B3A5C}
+.rc-meta{font-size:11px;color:#607d8b}
+.badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700}
+.badge-green{background:#E8F5E9;color:#217346}
+.badge-yellow{background:#FFF9E6;color:#7a5800}
+.empty{text-align:center;padding:32px;color:#90a4ae;font-size:13px}
+.toast{display:none;padding:8px 14px;border-radius:4px;font-size:12px;font-weight:600;margin-bottom:10px}
+.toast-ok{background:#E8F5E9;color:#217346;border:1px solid #a5d6a7}
+.toast-warn{background:#FFF9E6;color:#7a5800;border:1px solid #F0C040}
+.modal-overlay{display:none;position:relative;background:rgba(0,0,0,0.4);border-radius:6px;padding:20px;margin-bottom:10px;min-height:200px;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:6px;padding:20px;min-width:280px;max-width:400px}
+.modal h3{font-size:14px;font-weight:700;color:#1B3A5C;margin-bottom:12px}
+.nccep-note{font-size:10px;color:#607d8b;font-style:italic;margin-top:2px}
+</style>
+
+<h2 class="sr-only">ESO EHR — Patient Care Report, NCCEP Protocol</h2>
+
+<div class="app" id="app">
+<div id="toast" class="toast"></div>
+
+<div class="top-header">
+  <div>
+    <div class="logo">ESO EHR</div>
+    <div class="pcr-id" id="top-pcr-id">New PCR</div>
+  </div>
+  <div class="top-header-right">
+    <button class="hbtn hbtn-ghost" onclick="showReports()">All PCRs</button>
+    <button class="hbtn hbtn-ghost" onclick="newPCR()">+ New</button>
+    <button class="hbtn hbtn-green" onclick="savePCR()">Save PCR</button>
+    <button class="hbtn hbtn-red" onclick="clearForm()">Clear</button>
+  </div>
+</div>
+
+<div class="tab-bar" id="tab-bar">
+  <button class="tab-btn active" onclick="goTab('incident',this)">Incident</button>
+  <button class="tab-btn" onclick="goTab('patient',this)">Patient</button>
+  <button class="tab-btn" onclick="goTab('vitals',this)">Vitals</button>
+  <button class="tab-btn" onclick="goTab('flowchart',this)">Flow Chart</button>
+  <button class="tab-btn" onclick="goTab('narrative',this)">Narrative</button>
+  <button class="tab-btn" onclick="goTab('forms',this)">Forms</button>
+  <button class="tab-btn" onclick="goTab('billing',this)">Billing</button>
+  <button class="tab-btn" onclick="goTab('signatures',this)">Signatures</button>
+</div>
+
+<div class="tab-content">
+
+<!-- INCIDENT TAB -->
+<div class="tab-pane active" id="tab-incident">
+  <div class="sec">
+    <div class="sec-hdr">Unit / Crew Information</div>
+    <div class="sec-body">
+      <div class="g4">
+        <div class="f"><label>PCR #</label><input id="pcr_num" readonly style="background:#f4f8fc"></div>
+        <div class="f"><label>Incident # <span class="req">*</span></label><input id="inc_num" placeholder="e.g. 2025-04-1042"></div>
+        <div class="f"><label>Incident Date <span class="req">*</span></label><input type="date" id="inc_date"></div>
+        <div class="f"><label>Shift</label>
+          <select id="shift"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>Day</option><option>Night</option></select>
+        </div>
+      </div>
+      <div class="g4">
+        <div class="f"><label>Unit # <span class="req">*</span></label><input id="unit_num" placeholder="e.g. Medic 1"></div>
+        <div class="f"><label>Unit Type</label>
+          <select id="unit_type"><option value="">--</option><option>ALS — Paramedic</option><option>ALS — AEMT</option><option>BLS — EMT</option><option>First Response</option><option>Supervisor</option></select>
+        </div>
+        <div class="f"><label>Crew Lead <span class="req">*</span></label><input id="crew_lead" placeholder="Username / Name"></div>
+        <div class="f"><label>Partner</label><input id="crew_partner" placeholder="Username / Name"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr">Response Times</div>
+    <div class="sec-body">
+      <div class="times-row">
+        <div class="tbox"><label>Dispatch</label><input type="time" id="t_dispatch"><button class="tnow" onclick="setNow('t_dispatch')">Now</button></div>
+        <div class="tbox"><label>En Route</label><input type="time" id="t_enroute"><button class="tnow" onclick="setNow('t_enroute')">Now</button></div>
+        <div class="tbox"><label>On Scene</label><input type="time" id="t_onscene"><button class="tnow" onclick="setNow('t_onscene')">Now</button></div>
+        <div class="tbox"><label>At Patient</label><input type="time" id="t_atpatient"><button class="tnow" onclick="setNow('t_atpatient')">Now</button></div>
+        <div class="tbox"><label>Transporting</label><input type="time" id="t_transport"><button class="tnow" onclick="setNow('t_transport')">Now</button></div>
+        <div class="tbox"><label>At Dest.</label><input type="time" id="t_dest"><button class="tnow" onclick="setNow('t_dest')">Now</button></div>
+        <div class="tbox"><label>In Service</label><input type="time" id="t_inservice"><button class="tnow" onclick="setNow('t_inservice')">Now</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr">Dispatch Information</div>
+    <div class="sec-body">
+      <div class="g3">
+        <div class="f"><label>Dispatch Complaint <span class="req">*</span></label>
+          <select id="dispatch_complaint">
+            <option value="">-- Select --</option>
+            <option>Abdominal pain</option><option>Allergic reaction / Anaphylaxis</option>
+            <option>Altered mental status</option><option>Assault</option>
+            <option>Back pain</option><option>Behavioral / Psychiatric</option>
+            <option>Cardiac arrest</option><option>Chest pain</option>
+            <option>Choking / Foreign body airway</option><option>Diabetic emergency</option>
+            <option>Difficulty breathing / Dyspnea</option><option>Drowning</option>
+            <option>Electrocution</option><option>Eye injury</option>
+            <option>Fall</option><option>Headache</option>
+            <option>Hemorrhage / Bleeding</option><option>MVA — no injuries reported</option>
+            <option>MVA — injuries reported</option><option>MVA — entrapment</option>
+            <option>Nausea / Vomiting</option><option>OB / Obstetric</option>
+            <option>Overdose / Poisoning</option><option>Seizure</option>
+            <option>Sick person</option><option>Stroke / CVA</option>
+            <option>Syncope / Fainting</option><option>Traumatic injury</option>
+            <option>Unconscious / Unresponsive</option><option>Unknown</option>
+            <option>Welfare check</option>
+          </select>
+        </div>
+        <div class="f"><label>Scene Location <span class="req">*</span></label><input id="scene_location" placeholder="e.g. 123 Main St, intersection, hospital"></div>
+        <div class="f"><label>Scene Type</label>
+          <select id="scene_type"><option value="">--</option><option>Residence</option><option>Street / Highway</option><option>Public building</option><option>Healthcare facility</option><option>Workplace</option><option>School</option><option>Recreational area</option><option>Other</option></select>
+        </div>
+      </div>
+      <div class="g3">
+        <div class="f"><label>Response Priority</label>
+          <select id="response_priority"><option value="">--</option><option>Priority 1 — Emergent (lights/siren)</option><option>Priority 2 — Non-emergent</option><option>Priority 3 — Routine</option></select>
+        </div>
+        <div class="f"><label>Transport Priority</label>
+          <select id="transport_priority"><option value="">--</option><option>Priority 1 — Emergent (lights/siren)</option><option>Priority 2 — Non-emergent</option><option>Priority 3 — Routine</option></select>
+        </div>
+        <div class="f"><label>Destination Facility</label><input id="destination" placeholder="e.g. Bloxburg Medical Center"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr">Scene Assessment</div>
+    <div class="sec-body">
+      <div class="g3">
+        <div class="f"><label>Scene Safety</label>
+          <select id="scene_safety"><option value="">--</option><option>Safe</option><option>Unsafe — hazmat</option><option>Unsafe — violence</option><option>Unsafe — traffic</option><option>Unsafe — fire/explosion</option><option>Unknown</option></select>
+        </div>
+        <div class="f"><label>MOI / NOI</label>
+          <select id="moi"><option value="">--</option>
+            <option>Medical — unknown cause</option><option>Medical — known cause</option>
+            <option>Fall — less than 10 ft</option><option>Fall — greater than 10 ft</option>
+            <option>MVC — frontal impact</option><option>MVC — lateral impact</option>
+            <option>MVC — rear impact</option><option>MVC — rollover</option>
+            <option>Penetrating — gunshot</option><option>Penetrating — stabbing</option>
+            <option>Blunt force</option><option>Burns</option><option>Drowning</option>
+            <option>Electrocution</option><option>Hanging</option>
+          </select>
+        </div>
+        <div class="f"><label># of Patients</label>
+          <select id="num_pts"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option><option>MCI</option></select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PATIENT TAB -->
+<div class="tab-pane" id="tab-patient">
+  <div class="sec">
+    <div class="sec-hdr">Patient Demographics</div>
+    <div class="sec-body">
+      <div class="g4">
+        <div class="f"><label>Last Name</label><input id="pt_last" placeholder="Last name / username"></div>
+        <div class="f"><label>First Name</label><input id="pt_first" placeholder="First name"></div>
+        <div class="f"><label>Date of Birth</label><input type="date" id="pt_dob"></div>
+        <div class="f"><label>Age</label><input id="pt_age" placeholder="e.g. 34"></div>
+      </div>
+      <div class="g4">
+        <div class="f"><label>Sex</label>
+          <select id="pt_sex"><option value="">--</option><option>Male</option><option>Female</option><option>Unknown</option></select>
+        </div>
+        <div class="f"><label>Race</label>
+          <select id="pt_race"><option value="">--</option><option>White</option><option>Black / African American</option><option>Hispanic / Latino</option><option>Asian</option><option>Native American</option><option>Other</option><option>Unknown</option></select>
+        </div>
+        <div class="f"><label>Weight (lbs)</label><input id="pt_weight" placeholder="lbs"></div>
+        <div class="f"><label>Weight (kg)</label><input id="pt_weight_kg" placeholder="kg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr">Medical History</div>
+    <div class="sec-body">
+      <div class="g2">
+        <div class="f"><label>Past Medical History (PMHx)</label>
+          <textarea id="pt_pmhx" placeholder="e.g. HTN, DM2, CHF, COPD, CAD, Asthma, Seizure disorder..."></textarea>
+        </div>
+        <div class="f"><label>Current Medications</label>
+          <textarea id="pt_meds" placeholder="List current medications..."></textarea>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="f"><label>Allergies <span class="req">*</span></label><input id="pt_allergies" placeholder="e.g. PCN — rash, NKDA"></div>
+        <div class="f"><label>Allergy Reaction Type</label><input id="pt_allergy_type" placeholder="e.g. Rash, anaphylaxis, unknown"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr">Chief Complaint &amp; History of Present Illness</div>
+    <div class="sec-body">
+      <div class="f"><label>Chief Complaint (in patient's words) <span class="req">*</span></label>
+        <input id="chief_complaint" placeholder="e.g. I have had chest pressure for 20 minutes...">
+      </div>
+      <div class="g2">
+        <div>
+          <div class="g2">
+            <div class="f"><label>Onset</label>
+              <select id="onset"><option value="">--</option><option>Sudden</option><option>Gradual</option><option>Unknown</option></select>
+            </div>
+            <div class="f"><label>Duration</label><input id="duration" placeholder="e.g. 20 min, 2 hours"></div>
+          </div>
+          <div class="g2">
+            <div class="f"><label>Provocation / Palliation</label><input id="provocation" placeholder="What makes it better or worse?"></div>
+            <div class="f"><label>Quality</label>
+              <select id="quality"><option value="">--</option><option>Sharp</option><option>Dull</option><option>Pressure</option><option>Burning</option><option>Tearing</option><option>Cramping</option><option>Aching</option><option>Throbbing</option></select>
+            </div>
+          </div>
+          <div class="g2">
+            <div class="f"><label>Radiation</label><input id="radiation" placeholder="Does it radiate? Where?"></div>
+            <div class="f"><label>Severity (0–10)</label>
+              <select id="severity"><option value="">--</option><option>0 — None</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5 — Moderate</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10 — Worst possible</option></select>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="f"><label>Associated Symptoms</label>
+            <textarea id="associated_sx" placeholder="Nausea, vomiting, diaphoresis, syncope, dyspnea, palpitations..."></textarea>
+          </div>
+          <div class="f"><label>Last Known Well / Last Oral Intake</label><input id="lkw" placeholder="e.g. 30 min ago, 2 hrs ago"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr">Primary Assessment</div>
+    <div class="sec-body">
+      <div class="g4">
+        <div class="f"><label>Level of Consciousness <span class="req">*</span></label>
+          <select id="loc"><option value="">--</option>
+            <option>Alert — oriented x4 (person, place, time, event)</option>
+            <option>Alert — oriented x3</option><option>Alert — oriented x2</option>
+            <option>Alert — oriented x1</option><option>Alert — disoriented</option>
+            <option>Verbal</option><option>Pain</option><option>Unresponsive</option>
+          </select>
+        </div>
+        <div class="f"><label>Airway</label>
+          <select id="airway"><option value="">--</option><option>Patent</option><option>Obstructed — partial</option><option>Obstructed — complete</option><option>Maintained with adjunct</option><option>Secured — ETT</option><option>Secured — BIAD</option></select>
+        </div>
+        <div class="f"><label>Breathing</label>
+          <select id="breathing"><option value="">--</option><option>Normal — unlabored</option><option>Labored</option><option>Shallow</option><option>Rapid</option><option>Slow</option><option>Absent</option><option>Assisted — BVM</option><option>Assisted — CPAP</option></select>
+        </div>
+        <div class="f"><label>Circulation</label>
+          <select id="circulation"><option value="">--</option><option>Normal</option><option>Pale / Cool / Diaphoretic</option><option>Warm / Dry</option><option>Cyanotic</option><option>Hemorrhage — controlled</option><option>Hemorrhage — uncontrolled</option></select>
+        </div>
+      </div>
+      <div class="g4">
+        <div class="f"><label>Skin Color</label>
+          <select id="skin_color"><option value="">--</option><option>Normal</option><option>Pale</option><option>Flushed</option><option>Cyanotic</option><option>Jaundiced</option><option>Mottled</option></select>
+        </div>
+        <div class="f"><label>Skin Temp</label>
+          <select id="skin_temp"><option value="">--</option><option>Warm</option><option>Hot</option><option>Cool</option><option>Cold</option></select>
+        </div>
+        <div class="f"><label>Skin Condition</label>
+          <select id="skin_cond"><option value="">--</option><option>Dry</option><option>Diaphoretic</option><option>Moist</option><option>Clammy</option></select>
+        </div>
+        <div class="f"><label>Pupils</label>
+          <select id="pupils"><option value="">--</option><option>PERRL</option><option>Dilated — bilateral</option><option>Constricted — bilateral</option><option>Unequal (anisocoria)</option><option>Fixed and dilated</option><option>Non-reactive</option></select>
+        </div>
+      </div>
+      <div class="g3">
+        <div class="f"><label>Lung Sounds</label>
+          <select id="lung_sounds"><option value="">--</option><option>Clear bilaterally</option><option>Crackles — bilateral</option><option>Crackles — left</option><option>Crackles — right</option><option>Wheezes — bilateral</option><option>Wheezes — left</option><option>Wheezes — right</option><option>Diminished — bilateral</option><option>Diminished — left</option><option>Diminished — right</option><option>Absent — left</option><option>Absent — right</option><option>Stridor</option><option>Rhonchi</option></select>
+        </div>
+        <div class="f"><label>Cardiac Rhythm</label>
+          <select id="cardiac_rhythm"><option value="">--</option><option>Normal sinus rhythm</option><option>Sinus tachycardia</option><option>Sinus bradycardia</option><option>Atrial fibrillation</option><option>Atrial flutter</option><option>SVT</option><option>1st degree AV block</option><option>2nd degree AV block — Type I</option><option>2nd degree AV block — Type II</option><option>3rd degree (complete) AV block</option><option>Wide complex tachycardia</option><option>Ventricular tachycardia</option><option>Ventricular fibrillation</option><option>PEA</option><option>Asystole</option><option>Paced rhythm</option><option>LBBB</option><option>RBBB</option><option>Unknown</option></select>
+        </div>
+        <div class="f"><label>Stroke Screen (BEFAST)</label>
+          <select id="stroke_screen"><option value="">--</option><option>Negative — no deficits</option><option>Positive — balance deficit</option><option>Positive — eye deficit</option><option>Positive — facial droop</option><option>Positive — arm drift</option><option>Positive — speech deficit</option><option>Positive — multiple deficits</option><option>Unable to assess</option></select>
+        </div>
+      </div>
+      <div class="f"><label>Physical Exam Findings (Head-to-Toe)</label>
+        <textarea id="exam_findings" style="min-height:90px" placeholder="HEAD: No trauma. NECK: Trachea midline, no JVD. CHEST: Rise and fall equal bilaterally. ABDOMEN: Soft, non-tender. PELVIS: Stable. EXTREMITIES: CSM intact x4..."></textarea>
+      </div>
+      <div class="f"><label>Pertinent Negatives</label>
+        <textarea id="pertinent_neg" style="min-height:56px" placeholder="Denies nausea, vomiting. No JVD. No peripheral edema..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr">Field Impression</div>
+    <div class="sec-body">
+      <div class="g3">
+        <div class="f"><label>Primary Impression <span class="req">*</span></label>
+          <select id="impression">
+            <option value="">-- Select --</option>
+            <option>Abdominal pain — unknown etiology</option>
+            <option>Acute coronary syndrome (ACS)</option>
+            <option>Allergic reaction — mild</option><option>Anaphylaxis</option>
+            <option>Altered mental status — unknown</option>
+            <option>Behavioral / Psychiatric emergency</option>
+            <option>Burns — thermal</option><option>Burns — chemical</option>
+            <option>Cardiac arrest — medical</option><option>Cardiac arrest — traumatic</option>
+            <option>COPD exacerbation</option><option>CHF exacerbation</option>
+            <option>CVA / Stroke</option><option>TIA</option>
+            <option>Diabetic emergency — hypoglycemia</option>
+            <option>Diabetic emergency — hyperglycemia</option>
+            <option>Drowning</option><option>Drug / Alcohol intoxication</option>
+            <option>Hemorrhage — internal</option><option>Hemorrhage — external</option>
+            <option>Hyperthermia</option><option>Hypothermia</option>
+            <option>Nausea / Vomiting</option>
+            <option>Overdose — opioid</option><option>Overdose — stimulant</option>
+            <option>Overdose — unknown</option>
+            <option>OB — active labor</option><option>OB — emergency delivery</option>
+            <option>Pain — extremity</option><option>Pain — back</option>
+            <option>Respiratory distress — asthma</option>
+            <option>Respiratory distress — unknown</option>
+            <option>Seizure — generalized</option><option>Seizure — focal</option>
+            <option>Syncope</option><option>Traumatic injury — blunt</option>
+            <option>Traumatic injury — penetrating</option>
+            <option>No apparent illness / injury</option>
+          </select>
+        </div>
+        <div class="f"><label>NCCEP Protocol Used</label>
+          <select id="nccep_protocol">
+            <option value="">-- Select --</option>
+            <option>Medical — Airway Management</option>
+            <option>Medical — Allergic Reaction / Anaphylaxis</option>
+            <option>Medical — Altered Mental Status</option>
+            <option>Medical — Behavioral / Psychiatric</option>
+            <option>Medical — Cardiac Arrest (Medical)</option>
+            <option>Medical — Chest Pain / ACS</option>
+            <option>Medical — Diabetic Emergencies</option>
+            <option>Medical — Nausea / Vomiting</option>
+            <option>Medical — Obstetrics / Childbirth</option>
+            <option>Medical — Overdose / Poisoning</option>
+            <option>Medical — Pain Management</option>
+            <option>Medical — Respiratory Distress</option>
+            <option>Medical — Seizure</option>
+            <option>Medical — Sepsis</option>
+            <option>Medical — Stroke / CVA</option>
+            <option>Medical — Syncope</option>
+            <option>Trauma — Burns</option>
+            <option>Trauma — Cardiac Arrest (Traumatic)</option>
+            <option>Trauma — Environmental Emergencies</option>
+            <option>Trauma — Head Injury / TBI</option>
+            <option>Trauma — Multi-System Trauma</option>
+            <option>Trauma — Musculoskeletal / Extremity</option>
+            <option>Trauma — Penetrating Trauma</option>
+            <option>Trauma — Spinal Injury</option>
+            <option>Trauma — Wound Care</option>
+            <option>Universal — General Patient Care</option>
+          </select>
+        </div>
+        <div class="f"><label>Patient Acuity</label>
+          <select id="acuity"><option value="">--</option><option>Critical</option><option>Emergent</option><option>Lower acuity</option><option>No apparent distress</option></select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VITALS TAB -->
+<div class="tab-pane" id="tab-vitals">
+  <div class="sec">
+    <div class="sec-hdr">
+      <span>Vital Signs</span>
+      <span class="sh-badge" id="vitals-count">0 sets</span>
+    </div>
+    <div class="sec-body" style="overflow-x:auto">
+      <table class="vt" id="vitals-table">
+        <thead>
+          <tr>
+            <th>Time</th><th>BP Sys</th><th>BP Dia</th><th>HR</th><th>RR</th>
+            <th>SpO2%</th><th>GCS E</th><th>GCS V</th><th>GCS M</th><th>GCS Total</th>
+            <th>BGL mg/dL</th><th>Temp °F</th><th>Pain</th><th>EtCO2</th>
+            <th>Rhythm</th><th>Position</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="vitals-body"></tbody>
+      </table>
+      <button class="add-row-btn" onclick="addVital()">+ Add Vital Set</button>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec-hdr">12-Lead ECG</div>
+    <div class="sec-body">
+      <div class="g4">
+        <div class="f"><label>12-Lead Acquired</label>
+          <select id="ecg_acquired"><option value="">--</option><option>Yes</option><option>No</option><option>Refused</option><option>Unable</option></select>
+        </div>
+        <div class="f"><label>12-Lead Time</label><input type="time" id="ecg_time"></div>
+        <div class="f"><label>12-Lead Interpretation</label>
+          <select id="ecg_interp"><option value="">--</option><option>Normal sinus rhythm</option><option>STEMI — inferior</option><option>STEMI — anterior</option><option>STEMI — lateral</option><option>STEMI — posterior</option><option>NSTEMI pattern</option><option>LBBB — new or presumed new</option><option>RBBB</option><option>LVH</option><option>Non-specific ST changes</option><option>No acute changes</option></select>
+        </div>
+        <div class="f"><label>STEMI Alert Activated</label>
+          <select id="stemi_alert"><option value="">--</option><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOWCHART TAB -->
+<div class="tab-pane" id="tab-flowchart">
+  <div class="sec">
+    <div class="sec-hdr">
+      <span>Interventions &amp; Medications — Flow Chart</span>
+      <span class="sh-badge" id="fc-count">0 entries</span>
+    </div>
+    <div class="sec-body">
+      <div style="display:grid;grid-template-columns:90px 1fr 1fr 90px 1fr 90px 28px;gap:5px;margin-bottom:6px">
+        <span style="font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase">Time</span>
+        <span style="font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase">Intervention / Medication</span>
+        <span style="font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase">Dose / Details</span>
+        <span style="font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase">Route</span>
+        <span style="font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase">Patient Response</span>
+        <span style="font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase">Provider</span>
+        <span></span>
+      </div>
+      <div id="fc-body"></div>
+      <button class="add-row-btn" onclick="addFC()">+ Add Entry</button>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec-hdr">Disposition</div>
+    <div class="sec-body">
+      <div class="g3">
+        <div class="f"><label>Patient Disposition <span class="req">*</span></label>
+          <select id="disposition">
+            <option value="">-- Select --</option>
+            <option>Transported — ALS</option><option>Transported — BLS</option>
+            <option>Transported — air medical</option>
+            <option>Treated and released — AMA signed</option>
+            <option>Treated — no transport required</option>
+            <option>Cancelled prior to patient contact</option>
+            <option>Cancelled on scene — no patient</option>
+            <option>Patient dead on arrival (DOA)</option>
+            <option>Resuscitation attempted — unsuccessful</option>
+            <option>Transferred to ALS intercept</option>
+          </select>
+        </div>
+        <div class="f"><label>Transfer of Care To</label><input id="transfer_to" placeholder="Name / role of receiving provider"></div>
+        <div class="f"><label>Patient Condition at Transfer</label>
+          <select id="condition_transfer"><option value="">--</option><option>Improved</option><option>Unchanged</option><option>Deteriorated</option><option>Deceased</option></select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NARRATIVE TAB -->
+<div class="tab-pane" id="tab-narrative">
+  <div class="sec">
+    <div class="sec-hdr">Patient Care Narrative</div>
+    <div class="sec-body">
+      <div class="narrative-tools">
+        <button class="nbtn nbtn-primary" onclick="buildNarrative()">Auto-Build Narrative</button>
+        <button class="nbtn" onclick="insertTemplate('chart')">CHART Template</button>
+        <button class="nbtn" onclick="insertTemplate('soap')">SOAP Template</button>
+        <button class="nbtn" onclick="insertTemplate('dispatch')">Dispatch Template</button>
+      </div>
+      <div class="f"><label>Narrative <span class="req">*</span></label>
+        <textarea id="narrative" style="min-height:280px;font-family:'Courier New',monospace;font-size:12px;line-height:1.6" placeholder="Begin narrative..."></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORMS TAB -->
+<div class="tab-pane" id="tab-forms">
+  <div class="sec">
+    <div class="sec-hdr">Attached Forms</div>
+    <div class="sec-body">
+      <div class="g2" style="margin-bottom:12px">
+        <div style="border:1px solid #c8d4e0;border-radius:4px;padding:10px">
+          <div style="font-weight:700;font-size:12px;color:#1B3A5C;margin-bottom:6px">AMA / Refusal of Care Form</div>
+          <div class="f"><label>Reason for Refusal</label>
+            <select id="ama_reason"><option value="">--</option><option>N/A — transported</option><option>Patient refuses transport</option><option>Patient refuses treatment</option><option>Patient refuses both</option></select>
+          </div>
+          <div class="f"><label>Mental Capacity Assessed</label>
+            <select id="ama_capacity"><option value="">--</option><option>N/A</option><option>Yes — patient has capacity</option><option>No — patient lacks capacity</option></select>
+          </div>
+          <div class="f"><label>Risks explained to patient</label>
+            <select id="ama_risks"><option value="">--</option><option>N/A</option><option>Yes</option><option>No</option></select>
+          </div>
+          <div class="f"><label>AMA Form Signed</label>
+            <select id="ama_signed"><option value="">--</option><option>N/A</option><option>Yes — patient signed</option><option>Refused to sign</option><option>Witness only</option></select>
+          </div>
+        </div>
+        <div style="border:1px solid #c8d4e0;border-radius:4px;padding:10px">
+          <div style="font-weight:700;font-size:12px;color:#1B3A5C;margin-bottom:6px">CPR / Resuscitation</div>
+          <div class="f"><label>CPR Performed</label>
+            <select id="cpr_performed"><option value="">--</option><option>N/A</option><option>Yes — bystander CPR prior to EMS</option><option>Yes — EMS initiated</option><option>No</option></select>
+          </div>
+          <div class="f"><label>DNR / MOST on Scene</label>
+            <select id="dnr"><option value="">--</option><option>N/A</option><option>Yes — honored</option><option>Yes — not honored (family request)</option><option>No DNR present</option></select>
+          </div>
+          <div class="f"><label>Resuscitation Outcome</label>
+            <select id="resus_outcome"><option value="">--</option><option>N/A</option><option>ROSC achieved</option><option>No ROSC</option><option>Pronounced on scene</option></select>
+          </div>
+          <div class="f"><label>Time of Death (if applicable)</label><input type="time" id="time_death"></div>
+        </div>
+      </div>
+      <div style="border:1px solid #c8d4e0;border-radius:4px;padding:10px">
+        <div style="font-weight:700;font-size:12px;color:#1B3A5C;margin-bottom:8px">Stroke / STEMI Checklist</div>
+        <div class="g4">
+          <div class="f"><label>Last Known Well</label><input type="time" id="lkw_time"></div>
+          <div class="f"><label>Symptom Onset</label><input id="sx_onset" placeholder="e.g. 30 min ago"></div>
+          <div class="f"><label>Reperfusion Checklist</label>
+            <select id="reperfusion"><option value="">--</option><option>N/A</option><option>Completed — candidate</option><option>Completed — not candidate</option></select>
+          </div>
+          <div class="f"><label>Stroke Center Notification</label>
+            <select id="stroke_notify"><option value="">--</option><option>N/A</option><option>Yes</option><option>No</option></select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BILLING TAB -->
+<div class="tab-pane" id="tab-billing">
+  <div class="sec">
+    <div class="sec-hdr">Billing Information</div>
+    <div class="sec-body">
+      <div class="g3" style="margin-bottom:10px">
+        <div class="f"><label>Insurance Type</label>
+          <select id="ins_type"><option value="">--</option><option>Medicare</option><option>Medicaid</option><option>Private insurance</option><option>Self-pay</option><option>Workers compensation</option><option>No insurance</option><option>Unknown</option></select>
+        </div>
+        <div class="f"><label>Insurance Provider</label><input id="ins_provider" placeholder="e.g. Blue Cross, Aetna"></div>
+        <div class="f"><label>Policy / Member #</label><input id="ins_policy" placeholder="Policy number"></div>
+      </div>
+      <div class="g3" style="margin-bottom:10px">
+        <div class="f"><label>Service Level</label>
+          <select id="service_level"><option value="">--</option><option>ALS — Emergency (ALS1)</option><option>ALS — Emergency (ALS2)</option><option>ALS — Non-emergency</option><option>BLS — Emergency</option><option>BLS — Non-emergency</option><option>SCT — Specialty Care Transport</option><option>No transport</option></select>
+        </div>
+        <div class="f"><label>Miles Transported</label><input id="miles" placeholder="Odometer miles"></div>
+        <div class="f"><label>Medical Necessity</label>
+          <select id="med_necessity"><option value="">--</option><option>Emergency medical condition</option><option>Patient bed-confined</option><option>Patient unable to ambulate</option><option>Interfacility — medical necessity</option><option>No medical necessity — patient choice</option></select>
+        </div>
+      </div>
+      <div class="sec-hdr" style="margin:-1px -1px 0;border-radius:0">Procedure Codes</div>
+      <div style="padding:10px 0">
+        <div style="display:grid;grid-template-columns:1fr 2fr 80px 28px;gap:6px;margin-bottom:4px">
+          <span style="font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase">Code (HCPCS)</span>
+          <span style="font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase">Description</span>
+          <span style="font-size:10px;font-weight:700;color:#1B3A5C;text-transform:uppercase">Units</span>
+          <span></span>
+        </div>
+        <div id="billing-body"></div>
+        <button class="add-row-btn" onclick="addBillingRow()">+ Add Procedure Code</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SIGNATURES TAB -->
+<div class="tab-pane" id="tab-signatures">
+  <div class="sec">
+    <div class="sec-hdr">Crew Certification</div>
+    <div class="sec-body">
+      <div class="g2">
+        <div>
+          <div class="f"><label>Crew Lead — Name / Credential</label><input id="sig_lead_name" placeholder="Name and EMS credential level"></div>
+          <div class="f"><label>Crew Lead — Signature (type to sign)</label><input id="sig_lead" placeholder="Type name to certify"></div>
+          <div id="sig_lead_box" class="sig-box" onclick="signBox('lead')">Click to sign</div>
+        </div>
+        <div>
+          <div class="f"><label>Partner — Name / Credential</label><input id="sig_partner_name" placeholder="Name and EMS credential level"></div>
+          <div class="f"><label>Partner — Signature (type to sign)</label><input id="sig_partner" placeholder="Type name to certify"></div>
+          <div id="sig_partner_box" class="sig-box" onclick="signBox('partner')">Click to sign</div>
+        </div>
+      </div>
+      <div class="alert-box" style="margin-top:10px">
+        By signing, I certify that the information contained in this Patient Care Report is true, accurate, and complete to the best of my knowledge, and that all care provided was within my scope of practice and consistent with applicable protocols.
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec-hdr">Patient / Guardian Signature</div>
+    <div class="sec-body">
+      <div class="g3">
+        <div class="f"><label>Signature Type</label>
+          <select id="pt_sig_type"><option value="">--</option><option>Patient</option><option>Parent / Guardian</option><option>Legal representative</option><option>AMA — patient refuses to sign</option><option>Unable to obtain</option><option>N/A — DOA</option></select>
+        </div>
+        <div class="f"><label>Signer Name</label><input id="pt_sig_name" placeholder="Name of person signing"></div>
+        <div class="f"><label>Relationship (if not patient)</label><input id="pt_sig_relation" placeholder="e.g. Parent, spouse, POA"></div>
+      </div>
+      <div id="sig_pt_box" class="sig-box" style="margin-top:8px" onclick="signBox('patient')">Click to obtain patient signature</div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec-hdr">PCR Completion Status</div>
+    <div class="sec-body">
+      <div class="g4">
+        <div class="f"><label>PCR Status</label>
+          <select id="pcr_status"><option>In progress</option><option>Complete — pending review</option><option>Complete — reviewed</option><option>Amended</option></select>
+        </div>
+        <div class="f"><label>Medical Director Review</label>
+          <select id="md_review"><option value="">--</option><option>Pending</option><option>Reviewed — no issues</option><option>Reviewed — follow-up required</option></select>
+        </div>
+        <div class="f"><label>QA Flag</label>
+          <select id="qa_flag"><option>None</option><option>Medication error</option><option>Protocol deviation</option><option>Incomplete documentation</option><option>Outcome of interest</option></select>
+        </div>
+        <div class="f"><label>QA Notes</label><input id="qa_notes" placeholder="Optional QA notes"></div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;padding:10px 14px;background:#F4F8FC;border-top:1px solid #c8d4e0;border-radius:0 0 6px 6px">
+    <button class="hbtn hbtn-green" onclick="savePCR()" style="flex:1;padding:9px;font-size:13px">Save &amp; Lock PCR</button>
+    <button class="hbtn" onclick="window.print()" style="background:#fff;color:#1B3A5C;border:1px solid #b0bec5;padding:9px 18px;font-size:13px;font-weight:600;cursor:pointer">Print</button>
+  </div>
+</div>
+
+</div>
+
+<div class="status-bar" id="status-bar">
+  <div class="sb-item"><span class="dot dot-gray" id="dot-incident"></span> Incident</div>
+  <div class="sb-item"><span class="dot dot-gray" id="dot-patient"></span> Patient</div>
+  <div class="sb-item"><span class="dot dot-gray" id="dot-vitals"></span> Vitals</div>
+  <div class="sb-item"><span class="dot dot-gray" id="dot-flowchart"></span> Flow Chart</div>
+  <div class="sb-item"><span class="dot dot-gray" id="dot-narrative"></span> Narrative</div>
+  <div class="sb-item"><span class="dot dot-gray" id="dot-signatures"></span> Signatures</div>
+  <span style="margin-left:auto;font-weight:700" id="sb-pcr"></span>
+</div>
+
+<!-- Reports overlay -->
+<div class="modal-overlay" id="reports-modal">
+  <div class="modal" style="min-width:480px;max-width:600px;max-height:500px;overflow-y:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <h3>Saved PCRs</h3>
+      <div style="display:flex;gap:6px">
+        <button class="hbtn hbtn-white" onclick="newPCR()" style="font-size:12px;padding:4px 10px;border:1px solid #b0bec5;cursor:pointer">+ New PCR</button>
+        <button onclick="closeReports()" style="border:none;background:none;font-size:18px;cursor:pointer;color:#607d8b">&times;</button>
+      </div>
+    </div>
+    <div id="reports-inner"></div>
+  </div>
+</div>
+</div>
+
+<script>
+let reports=[];
+try{reports=JSON.parse(localStorage.getItem('eso_reports')||'[]');}catch(e){}
+let currentId=null;
+
+function $(id){return document.getElementById(id);}
+function val(id){const e=$(id);return e?e.value:'';}
+function setVal(id,v){const e=$(id);if(e)e.value=v||'';}
+
+function setNow(id){
+  const n=new Date();
+  $(id).value=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+}
+
+function goTab(name,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  $('tab-'+name).classList.add('active');
+  if(btn) btn.classList.add('active');
+  updateStatus();
+}
+
+function genId(){return 'PCR-'+Date.now().toString().slice(-7);}
+
+function addVital(){
+  const n=new Date();
+  const t=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+  const rhythms=['','NSR','Sinus tach','Sinus brady','A-fib','A-flutter','SVT','V-tach','V-fib','PEA','Asystole'];
+  const rOpts=rhythms.map(r=>`<option>${r}</option>`).join('');
+  const posOpts=['','Supine','Sitting','Semi-Fowlers','Fowlers','Prone','Left lateral','Right lateral'].map(p=>`<option>${p}</option>`).join('');
+  const tr=document.createElement('tr');
+  tr.innerHTML=`
+    <td><input type="time" value="${t}" style="width:75px"></td>
+    <td><input type="text" placeholder="120" style="width:44px"></td>
+    <td><input type="text" placeholder="80" style="width:44px"></td>
+    <td><input type="text" placeholder="80" style="width:44px"></td>
+    <td><input type="text" placeholder="16" style="width:40px"></td>
+    <td><input type="text" placeholder="98" style="width:40px"></td>
+    <td><input type="text" placeholder="4" style="width:36px" title="Eye 1-4"></td>
+    <td><input type="text" placeholder="5" style="width:36px" title="Verbal 1-5"></td>
+    <td><input type="text" placeholder="6" style="width:36px" title="Motor 1-6"></td>
+    <td><input type="text" placeholder="15" style="width:40px" readonly style="background:#f4f8fc"></td>
+    <td><input type="text" placeholder="100" style="width:52px"></td>
+    <td><input type="text" placeholder="98.6" style="width:48px"></td>
+    <td><input type="text" placeholder="0" style="width:36px"></td>
+    <td><input type="text" placeholder="35" style="width:40px"></td>
+    <td><select style="width:110px">${rOpts}</select></td>
+    <td><select style="width:100px">${posOpts}</select></td>
+    <td><button class="del-btn" onclick="this.closest('tr').remove();updateCounts()">X</button></td>`;
+  $('vitals-body').appendChild(tr);
+  const inputs=tr.querySelectorAll('td:nth-child(7) input, td:nth-child(8) input, td:nth-child(9) input');
+  const gcsTotal=tr.querySelector('td:nth-child(10) input');
+  function calcGCS(){
+    const e=parseInt(inputs[0].value)||0;
+    const v=parseInt(inputs[1].value)||0;
+    const m=parseInt(inputs[2].value)||0;
+    gcsTotal.value=(e+v+m)||'';
+  }
+  inputs.forEach(i=>i.addEventListener('input',calcGCS));
+  updateCounts();
+}
+
+function addFC(){
+  const n=new Date();
+  const t=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+  const interventions=[
+    '','IV Access — peripheral','IO Access','Oxygen — NC','Oxygen — NRB','Oxygen — BVM','CPAP',
+    'Airway — OPA','Airway — NPA','Airway — BIAD','Airway — ETT',
+    'Cardiac Monitor applied','12-Lead ECG acquired','AED applied','Defibrillation',
+    'CPR initiated','Spinal motion restriction','Tourniquet applied','Wound packing',
+    'Glucose check','Splinting','Hemorrhage control',
+    'Aspirin 324mg PO','Nitroglycerin SL','Epinephrine 0.3mg IM (auto-injector)',
+    'Naloxone (Narcan) IN/IM','Albuterol nebulizer','Oral glucose','Activated charcoal',
+    'Normal saline IV bolus','Diphenhydramine (Benadryl)',
+    'Glucagon IM','Other — see narrative'
+  ];
+  const iOpts=interventions.map(i=>`<option>${i}</option>`).join('');
+  const routes=['','PO','IV','IO','IM','IN','SQ','Topical','Inhalation','NRB','NC','Auto-injector','N/A'].map(r=>`<option>${r}</option>`).join('');
+  const responses=['','Improved','No change','Worsened','N/A'].map(r=>`<option>${r}</option>`).join('');
+  const row=document.createElement('div');
+  row.className='fc-row';
+  row.innerHTML=`
+    <div class="f"><input type="time" value="${t}"></div>
+    <div class="f"><select>${iOpts}</select></div>
+    <div class="f"><input type="text" placeholder="Dose / detail"></div>
+    <div class="f"><select>${routes}</select></div>
+    <div class="f"><select>${responses}</select></div>
+    <div class="f"><input type="text" placeholder="Provider"></div>
+    <button class="del-btn" onclick="this.closest('.fc-row').remove();updateCounts()" style="margin-bottom:0">X</button>`;
+  $('fc-body').appendChild(row);
+  updateCounts();
+}
+
+function addBillingRow(){
+  const codes=[
+    ['',''],['A0426','ALS — non-emergency transport'],['A0427','ALS — emergency transport (ALS1)'],
+    ['A0428','BLS — non-emergency transport'],['A0429','BLS — emergency transport'],
+    ['A0433','ALS2 — emergency transport'],['A0999','Mileage per mile'],
+    ['A4611','O2 supply/equipment'],['99152','Moderate sedation']
+  ];
+  const cOpts=codes.map(c=>`<option value="${c[0]}">${c[0]?c[0]+' — ':''} ${c[1]}</option>`).join('');
+  const row=document.createElement('div');
+  row.className='billing-row';
+  row.innerHTML=`
+    <div class="f"><select onchange="this.closest('.billing-row').querySelector('input').value=this.options[this.selectedIndex].text.replace(/^[A-Z0-9]+ — /,'')">${cOpts}</select></div>
+    <div class="f"><input type="text" placeholder="Description"></div>
+    <div class="f"><input type="text" placeholder="1" style="width:60px"></div>
+    <button class="del-btn" onclick="this.closest('.billing-row').remove()" style="margin-bottom:0">X</button>`;
+  $('billing-body').appendChild(row);
+}
+
+function updateCounts(){
+  const vc=$('vitals-body').querySelectorAll('tr').length;
+  const fc=$('fc-body').querySelectorAll('.fc-row').length;
+  $('vitals-count').textContent=vc+' set'+(vc!==1?'s':'');
+  $('fc-count').textContent=fc+' entr'+(fc!==1?'ies':'y');
+}
+
+function signBox(who){
+  const nameId=who==='patient'?'pt_sig_name':who==='lead'?'sig_lead':'sig_partner';
+  const name=val(nameId)||(who==='lead'?val('crew_lead'):who==='partner'?val('crew_partner'):'');
+  const boxId='sig_'+who+'_box';
+  if(name){
+    $(boxId).textContent=name+' — '+new Date().toLocaleString();
+    $(boxId).classList.add('signed');
+  } else {
+    showToast('Please enter a name before signing.','warn');
+  }
+}
+
+function updateStatus(){
+  const checks={
+    incident:()=>val('unit_num')&&val('inc_num'),
+    patient:()=>val('chief_complaint')&&val('pt_last'),
+    vitals:()=>$('vitals-body').querySelectorAll('tr').length>0,
+    flowchart:()=>$('fc-body').querySelectorAll('.fc-row').length>0,
+    narrative:()=>val('narrative').length>20,
+    signatures:()=>val('sig_lead').length>0
+  };
+  Object.entries(checks).forEach(([k,fn])=>{
+    const dot=$('dot-'+k);
+    if(dot) dot.className='dot '+(fn()?'dot-green':'dot-gray');
+  });
+}
+
+function buildNarrative(){
+  const unit=val('unit_num')||'This unit';
+  const complaint=val('dispatch_complaint')||val('chief_complaint')||'unknown complaint';
+  const loc=val('scene_location')||'the scene';
+  const pt=(val('pt_first')+' '+val('pt_last')).trim()||'the patient';
+  const age=val('pt_age');
+  const sex=val('pt_sex');
+  const lc=val('loc');
+  const skin=[val('skin_color'),val('skin_temp'),val('skin_cond')].filter(Boolean).join(', ');
+  const lungs=val('lung_sounds');
+  const pupils=val('pupils');
+  const onscene=val('t_onscene');
+  const pmhx=val('pt_pmhx');
+  const meds=val('pt_meds');
+  const allergies=val('pt_allergies');
+  const exam=val('exam_findings');
+  const neg=val('pertinent_neg');
+  const impression=val('impression');
+  const protocol=val('nccep_protocol');
+  const disposition=val('disposition');
+  const receiving=val('destination');
+  const transfer=val('transfer_to');
+  const condTransfer=val('condition_transfer');
+  const vitals=$('vitals-body').querySelectorAll('tr');
+  const fcRows=$('fc-body').querySelectorAll('.fc-row');
+  const onset=val('onset'); const duration=val('duration');
+  const quality=val('quality'); const radiation=val('radiation');
+  const severity=val('severity'); const provocation=val('provocation');
+
+  let n=`${unit} was dispatched to ${loc} in response to a reported ${complaint}. `;
+  n+=`Upon arrival${onscene?' at '+onscene:''}, crew made contact with ${pt}`;
+  if(age||sex) n+=` (${[age?age+' y/o':'',sex].filter(Boolean).join(', ')})`;
+  n+=`.\n\n`;
+
+  n+=`CHIEF COMPLAINT: ${val('chief_complaint')||complaint}.\n\n`;
+
+  n+=`HISTORY OF PRESENT ILLNESS: `;
+  if(onset||duration) n+=`Patient reports ${onset?onset.toLowerCase()+' ':''} onset of symptoms${duration?' approximately '+duration+' ago':''}. `;
+  if(quality) n+=`Patient describes the pain/discomfort as ${quality.toLowerCase()}. `;
+  if(radiation) n+=`${radiation}. `;
+  if(provocation) n+=`${provocation}. `;
+  if(severity) n+=`Patient rates severity as ${severity.split(' ')[0]}/10. `;
+  if(val('associated_sx')) n+=`Associated symptoms include: ${val('associated_sx')}. `;
+  n+=`\n\n`;
+
+  if(pmhx||meds||allergies){
+    n+=`PAST MEDICAL HISTORY: ${pmhx||'None reported'}. `;
+    if(meds) n+=`Current medications: ${meds}. `;
+    if(allergies) n+=`Allergies: ${allergies}. `;
+    n+=`\n\n`;
+  }
+
+  n+=`PRIMARY ASSESSMENT: Patient is ${lc||'alert'}.`;
+  if(skin) n+=` Skin is ${skin}.`;
+  if(lungs) n+=` Lung sounds: ${lungs}.`;
+  if(pupils) n+=` Pupils: ${pupils}.`;
+  n+=`\n\n`;
+
+  if(exam||neg){
+    n+=`SECONDARY ASSESSMENT: ${exam||''} ${neg||''}\n\n`;
+  }
+
+  if(vitals.length){
+    const inp=vitals[0].querySelectorAll('input,select');
+    n+=`INITIAL VITALS (${inp[0]?.value||'--'}): BP ${inp[1]?.value||'--'}/${inp[2]?.value||'--'}, HR ${inp[3]?.value||'--'}, RR ${inp[4]?.value||'--'}, SpO2 ${inp[5]?.value||'--'}%, GCS ${inp[9]?.value||'--'}, Pain ${inp[12]?.value||'--'}/10.\n\n`;
+  }
+
+  if(protocol) n+=`NCCEP PROTOCOL: ${protocol}.\n\n`;
+
+  if(fcRows.length){
+    n+=`TREATMENT: `;
+    const txArr=[];
+    fcRows.forEach(r=>{
+      const ins=r.querySelectorAll('input,select');
+      const iname=ins[1]?.value; const dose=ins[2]?.value; const route=ins[3]?.value; const response=ins[4]?.value;
+      if(iname) txArr.push(`${iname}${dose?' '+dose:''}${route&&route!=='N/A'?' via '+route:''}${response&&response!=='N/A'?' — patient '+response.toLowerCase():''}`);
+    });
+    n+=txArr.join('; ')+`.\n\n`;
+  }
+
+  if(impression) n+=`FIELD IMPRESSION: ${impression}.\n\n`;
+
+  if(disposition){
+    n+=`DISPOSITION: ${disposition}`;
+    if(receiving) n+=` to ${receiving}`;
+    if(transfer) n+=`. Transferred care to ${transfer}`;
+    if(condTransfer) n+=`. Patient condition at transfer: ${condTransfer.toLowerCase()}`;
+    n+=`.\n`;
+  }
+
+  $('narrative').value=n.trim();
+  goTab('narrative', document.querySelectorAll('.tab-btn')[4]);
+  showToast('Narrative auto-built. Review and finalize before signing.');
+}
+
+function insertTemplate(type){
+  const templates={
+    chart:`CHIEF COMPLAINT: \n\nHISTORY: \n\nASSESSMENT: \n\nRX (TREATMENT): \n\nTRANSPORT: `,
+    soap:`SUBJECTIVE: \n\nOBJECTIVE: \nVitals: \nExam: \n\nASSESSMENT: \n\nPLAN: `,
+    dispatch:`[Unit] dispatched to [location] for [complaint] at [time].\n\nOn arrival, [findings].\n\nPatient was [assessment].\n\nTreatment included [interventions].\n\nPatient [disposition].`
+  };
+  $('narrative').value=templates[type]||'';
+}
+
+function gatherData(){
+  const vitals=[];
+  $('vitals-body').querySelectorAll('tr').forEach(r=>{
+    const i=r.querySelectorAll('input,select');
+    vitals.push({time:i[0]?.value,sys:i[1]?.value,dia:i[2]?.value,hr:i[3]?.value,rr:i[4]?.value,spo2:i[5]?.value,gcse:i[6]?.value,gcsv:i[7]?.value,gcsm:i[8]?.value,gcs:i[9]?.value,bgl:i[10]?.value,temp:i[11]?.value,pain:i[12]?.value,etco2:i[13]?.value,rhythm:i[14]?.value,position:i[15]?.value});
+  });
+  const fc=[];
+  $('fc-body').querySelectorAll('.fc-row').forEach(r=>{
+    const i=r.querySelectorAll('input,select');
+    fc.push({time:i[0]?.value,name:i[1]?.value,dose:i[2]?.value,route:i[3]?.value,response:i[4]?.value,provider:i[5]?.value});
+  });
+  const billing=[];
+  $('billing-body').querySelectorAll('.billing-row').forEach(r=>{
+    const i=r.querySelectorAll('input,select');
+    billing.push({code:i[0]?.value,desc:i[1]?.value,units:i[2]?.value});
+  });
+  const fields=['pcr_num','inc_num','inc_date','shift','unit_num','unit_type','crew_lead','crew_partner',
+    't_dispatch','t_enroute','t_onscene','t_atpatient','t_transport','t_dest','t_inservice',
+    'dispatch_complaint','scene_location','scene_type','response_priority','transport_priority','destination',
+    'scene_safety','moi','num_pts',
+    'pt_last','pt_first','pt_dob','pt_age','pt_sex','pt_race','pt_weight','pt_weight_kg',
+    'pt_pmhx','pt_meds','pt_allergies','pt_allergy_type',
+    'chief_complaint','onset','duration','provocation','quality','radiation','severity','associated_sx','lkw',
+    'loc','airway','breathing','circulation','skin_color','skin_temp','skin_cond','pupils','lung_sounds','cardiac_rhythm','stroke_screen',
+    'exam_findings','pertinent_neg','impression','nccep_protocol','acuity',
+    'ecg_acquired','ecg_time','ecg_interp','stemi_alert',
+    'disposition','transfer_to','condition_transfer',
+    'narrative',
+    'ama_reason','ama_capacity','ama_risks','ama_signed',
+    'cpr_performed','dnr','resus_outcome','time_death',
+    'lkw_time','sx_onset','reperfusion','stroke_notify',
+    'ins_type','ins_provider','ins_policy','service_level','miles','med_necessity',
+    'sig_lead_name','sig_lead','sig_partner_name','sig_partner','pt_sig_type','pt_sig_name','pt_sig_relation',
+    'pcr_status','md_review','qa_flag','qa_notes'];
+  const data={saved:new Date().toISOString(),vitals,fc,billing};
+  fields.forEach(f=>{data[f]=val(f);});
+  return data;
+}
+
+function savePCR(){
+  const data=gatherData();
+  if(!data.inc_num&&!data.chief_complaint){showToast('Please enter at least an incident number or chief complaint.','warn');return;}
+  const idx=reports.findIndex(r=>r.pcr_num===data.pcr_num);
+  if(idx>=0) reports[idx]=data; else reports.unshift(data);
+  try{localStorage.setItem('eso_reports',JSON.stringify(reports));}catch(e){}
+  $('top-pcr-id').textContent=data.pcr_num;
+  $('sb-pcr').textContent=data.pcr_num;
+  updateStatus();
+  showToast('PCR '+data.pcr_num+' saved.');
+}
+
+function loadPCR(id){
+  const r=reports.find(x=>x.pcr_num===id);
+  if(!r) return;
+  ['pcr_num','inc_num','inc_date','shift','unit_num','unit_type','crew_lead','crew_partner',
+    't_dispatch','t_enroute','t_onscene','t_atpatient','t_transport','t_dest','t_inservice',
+    'dispatch_complaint','scene_location','scene_type','response_priority','transport_priority','destination',
+    'scene_safety','moi','num_pts',
+    'pt_last','pt_first','pt_dob','pt_age','pt_sex','pt_race','pt_weight','pt_weight_kg',
+    'pt_pmhx','pt_meds','pt_allergies','pt_allergy_type',
+    'chief_complaint','onset','duration','provocation','quality','radiation','severity','associated_sx','lkw',
+    'loc','airway','breathing','circulation','skin_color','skin_temp','skin_cond','pupils','lung_sounds','cardiac_rhythm','stroke_screen',
+    'exam_findings','pertinent_neg','impression','nccep_protocol','acuity',
+    'ecg_acquired','ecg_time','ecg_interp','stemi_alert',
+    'disposition','transfer_to','condition_transfer',
+    'narrative',
+    'ama_reason','ama_capacity','ama_risks','ama_signed',
+    'cpr_performed','dnr','resus_outcome','time_death',
+    'lkw_time','sx_onset','reperfusion','stroke_notify',
+    'ins_type','ins_provider','ins_policy','service_level','miles','med_necessity',
+    'sig_lead_name','sig_lead','sig_partner_name','sig_partner','pt_sig_type','pt_sig_name','pt_sig_relation',
+    'pcr_status','md_review','qa_flag','qa_notes'
+  ].forEach(f=>setVal(f,r[f]));
+  $('vitals-body').innerHTML='';$('fc-body').innerHTML='';$('billing-body').innerHTML='';
+  (r.vitals||[]).forEach(v=>{
+    addVital();
+    const rows=$('vitals-body').querySelectorAll('tr');
+    const last=rows[rows.length-1];
+    const ins=last.querySelectorAll('input,select');
+    [v.time,v.sys,v.dia,v.hr,v.rr,v.spo2,v.gcse,v.gcsv,v.gcsm,v.gcs,v.bgl,v.temp,v.pain,v.etco2,v.rhythm,v.position].forEach((val,i)=>{if(ins[i]&&val)ins[i].value=val;});
+  });
+  (r.fc||[]).forEach(fc=>{
+    addFC();
+    const rows=$('fc-body').querySelectorAll('.fc-row');
+    const last=rows[rows.length-1];
+    const ins=last.querySelectorAll('input,select');
+    [fc.time,fc.name,fc.dose,fc.route,fc.response,fc.provider].forEach((val,i)=>{if(ins[i]&&val)ins[i].value=val;});
+  });
+  (r.billing||[]).forEach(b=>{
+    addBillingRow();
+    const rows=$('billing-body').querySelectorAll('.billing-row');
+    const last=rows[rows.length-1];
+    const ins=last.querySelectorAll('input,select');
+    [b.code,b.desc,b.units].forEach((val,i)=>{if(ins[i]&&val)ins[i].value=val;});
+  });
+  $('top-pcr-id').textContent=r.pcr_num;
+  $('sb-pcr').textContent=r.pcr_num;
+  updateCounts(); updateStatus(); closeReports();
+  goTab('incident',document.querySelectorAll('.tab-btn')[0]);
+}
+
+function deleteReport(id,e){
+  e.stopPropagation();
+  reports=reports.filter(r=>r.pcr_num!==id);
+  try{localStorage.setItem('eso_reports',JSON.stringify(reports));}catch(e){}
+  renderReports();
+}
+
+function renderReports(){
+  const el=$('reports-inner');
+  if(!reports.length){el.innerHTML='<div class="empty">No saved PCRs yet.</div>';return;}
+  el.innerHTML=`<div style="font-size:11px;color:#607d8b;margin-bottom:8px">${reports.length} report(s) saved in this browser.</div>`+
+  reports.map(r=>{
+    const d=r.inc_date?new Date(r.inc_date+'T12:00').toLocaleDateString():'No date';
+    const pt=((r.pt_first||'')+' '+(r.pt_last||'')).trim()||'Unknown patient';
+    const complete=r.disposition&&r.disposition.length>0;
+    return `<div class="rc" onclick="loadPCR('${r.pcr_num}')">
+      <div class="rc-header">
+        <div><div class="rc-title">${r.pcr_num}</div><div class="rc-meta">${d} · ${r.unit_num||'Unit?'} · ${r.crew_lead||'No crew'}</div></div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span class="badge ${complete?'badge-green':'badge-yellow'}">${complete?'Complete':'In progress'}</span>
+          <button onclick="deleteReport('${r.pcr_num}',event)" style="border:1px solid #C0392B;background:none;color:#C0392B;padding:2px 7px;border-radius:3px;font-size:11px;cursor:pointer">Del</button>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#607d8b">${pt} · ${(r.dispatch_complaint||r.chief_complaint||'No complaint').slice(0,60)}</div>
+    </div>`;
+  }).join('');
+}
+
+function showReports(){renderReports();$('reports-modal').classList.add('open');}
+function closeReports(){$('reports-modal').classList.remove('open');}
+
+function newPCR(){
+  document.querySelectorAll('input,select,textarea').forEach(el=>{if(el.id!=='num_pts')el.value='';});
+  $('vitals-body').innerHTML='';$('fc-body').innerHTML='';$('billing-body').innerHTML='';
+  document.querySelectorAll('.sig-box').forEach(b=>{b.textContent=b.id==='sig_pt_box'?'Click to obtain patient signature':'Click to sign';b.classList.remove('signed');});
+  const id=genId();
+  setVal('pcr_num',id);
+  setVal('inc_date',new Date().toISOString().split('T')[0]);
+  setVal('num_pts','1');
+  $('top-pcr-id').textContent=id;$('sb-pcr').textContent=id;
+  updateCounts();updateStatus();closeReports();
+  goTab('incident',document.querySelectorAll('.tab-btn')[0]);
+}
+
+function showToast(msg,type){
+  const t=$('toast');
+  t.textContent=msg;
+  t.className='toast '+(type==='warn'?'toast-warn':'toast-ok');
+  t.style.display='block';
+  setTimeout(()=>{t.style.display='none';},3500);
+}
+
+newPCR();
+</script>
